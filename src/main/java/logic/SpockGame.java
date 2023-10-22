@@ -40,6 +40,7 @@ public class SpockGame implements Game {
 			 
 			history.addToHistory(result);
 			
+			
 			out.printMenuPostGame(history);
 
 			

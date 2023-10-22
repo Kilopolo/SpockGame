@@ -41,7 +41,7 @@ public class History {
     }
 
 	public List<Result> getResults() {
-		// TODO Auto-generated method stub
+
 		return results;
 	}
     

@@ -37,52 +37,33 @@ public class SpockRules {
 	}
 
 	public Result getResultOf(Item fig, Item fig2) {
-//		for (Entry<Item, Map<Item, String>> entry : getRules().entrySet()) {
-//		    System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
-//		    
-//		}
 
-//		ResultState isWin;
-		
-		
-//		return new Result(fig, fig2, getRules().get(fig).get(fig2), isWin);
-		
-		
 		Map<Item, String> figRules = getRules().get(fig);
-	    
-	    if (figRules == null || !figRules.containsKey(fig2)) {
-	        // Si las reglas no están definidas, o no se encuentra una regla para fig2
-	        return new Result(fig, fig2, "No se pudo determinar el resultado", ResultState.UNKNOWN);
-	    }
-	    
-	    String action = figRules.get(fig2);
-	    
-	    ResultState resultState;
-	    
-	    if (fig == fig2) {
-	        resultState = ResultState.DRAW;
-	    } else {
-	        switch (action) {
-	            case "crushes":
-	            case "smashes":
-	            case "vaporizes":
-	            case "covers":
-	            case "cuts":
-	                resultState = ResultState.WIN;
-	                break;
-	            case "decapitates":
-	            case "eats":
-	            case "poisons":
-	            case "disproves":
-	                resultState = ResultState.LOSE;
-	                break;
-	            default:
-	                resultState = ResultState.UNKNOWN;
-	                break;
-	        }
-	    }
-	    
-	    return new Result(fig, fig2, action, resultState);
+
+
+		String action = figRules.get(fig2);
+		ResultState resultState = ResultState.UNKNOWN;
+		// si es igual ha empatado
+		if (fig == fig2) {
+			resultState = ResultState.DRAW;
+			action = "draws";
+		} else
+		// si no o ha perdido
+		if (action == null) {
+			resultState = ResultState.LOSE;
+			//les doy la vuelta
+			Item fig1Copy = fig2;
+			Item fig2Copy = fig;
+			//le pido el resultado de la lucha
+			action = getRules().get(fig1Copy).get(fig2Copy);
+			
+			return new Result(fig1Copy, fig2Copy, action, resultState);
+		} else {
+			// si esta es que ha ganao
+			resultState = ResultState.WIN;
+		}
+		return new Result(fig, fig2, action, resultState);
+		
 	}
 
 	public Map<Item, Map<Item, String>> getRules() {

@@ -42,7 +42,8 @@ public class Output {
 
 	public void printResult(Result result) {
 		System.out.println("Resultado: " + result.toString());
-
+		System.out.println("You "+ result.getGameResult());
+		System.out.println();
 	}
 
 	public boolean askSalir() {
