@@ -2,6 +2,8 @@ package logic;
 
 import java.time.LocalDate;
 
+import persistence.Manager;
+
 public class SpockGame implements Game {
 
 	
