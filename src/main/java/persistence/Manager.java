@@ -1,6 +1,9 @@
 package persistence;
 
+import java.util.List;
+
 import logic.History;
+import logic.Result;
 
 public class Manager {
 
@@ -9,8 +12,10 @@ public class Manager {
 		
 	}
 
-	public void getHistory() {
-		// TODO Auto-generated method stub
+	public List<Result> getHistory() {
+		// TODO Persistencia
+		return null;
+		
 		
 	}
 	

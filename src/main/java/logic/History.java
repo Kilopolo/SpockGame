@@ -15,7 +15,7 @@ public class History {
 		super();
 
 		manager = new Manager();
-		manager.getHistory();
+		results = manager.getHistory();
 	}
 
 	public void addToHistory(Result result) {
