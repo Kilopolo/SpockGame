@@ -11,7 +11,7 @@ public class SpockGame implements Game {
 	private boolean salir = false;
 	private Enemy ai;
     private History history;
-	private Manager manager;
+	
 	private SpockRules sr;
 	
 	public SpockGame() {
@@ -23,7 +23,6 @@ public class SpockGame implements Game {
 		this.ai = ai;
 		sr = new SpockRules();
 		history = new History();
-		manager = new Manager();
 	}
 
 	@Override
@@ -46,7 +45,7 @@ public class SpockGame implements Game {
 			out.printMenuPostGame(history);
 
 			
-			manager.saveAllData(history,LocalDate.now());
+			history.saveAllData();
 			
 			salir = out.askSalir();
 

@@ -3,10 +3,21 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import persistence.Manager;
+
 public class History {
 
-	List<Result>results = new ArrayList<>();
+	private List<Result>results = new ArrayList<>();
+	private Manager manager;
 	
+	
+	public History() {
+		super();
+
+		manager = new Manager();
+		manager.getHistory();
+	}
+
 	public void addToHistory(Result result) {
 		this.results.add(result);
 		
@@ -43,6 +54,11 @@ public class History {
 	public List<Result> getResults() {
 
 		return results;
+	}
+
+	public void saveAllData() {
+		manager.saveAllData(this);
+		
 	}
     
     
